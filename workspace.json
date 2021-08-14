@@ -1,0 +1,59 @@
+{
+  "version": 2,
+  "projects": {
+    "arkanyx-server": {
+      "root": "apps/arkanyx-server",
+      "sourceRoot": "apps/arkanyx-server/src",
+      "projectType": "application",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/node:build",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/apps/arkanyx-server",
+            "main": "apps/arkanyx-server/src/main.ts",
+            "tsConfig": "apps/arkanyx-server/tsconfig.app.json",
+            "assets": ["apps/arkanyx-server/src/assets"]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/arkanyx-server/src/environments/environment.ts",
+                  "with": "apps/arkanyx-server/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "executor": "@nrwl/node:execute",
+          "options": {
+            "buildTarget": "arkanyx-server:build"
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/arkanyx-server/**/*.ts"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/arkanyx-server"],
+          "options": {
+            "jestConfig": "apps/arkanyx-server/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "defaultCollection": "@nrwl/nest"
+  },
+  "defaultProject": "arkanyx-server"
+}
