@@ -27,7 +27,10 @@
     ]
   },
   "projects": {
-    "arkanyx-server": {
+    "client": {
+      "tags": []
+    },
+    "server": {
       "tags": []
     }
   }

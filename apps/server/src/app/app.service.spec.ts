@@ -14,9 +14,9 @@ describe('AppService', () => {
   });
 
   describe('getData', () => {
-    it('should return "Welcome to arkanyx-server!"', () => {
+    it('should return "Welcome to server!"', () => {
       expect(service.getData()).toEqual({
-        message: 'Welcome to arkanyx-server!',
+        message: 'Welcome to server!',
       });
     });
   });
